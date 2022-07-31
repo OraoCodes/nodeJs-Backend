@@ -4,6 +4,11 @@
 
 const http = require("http");
 
-const server = http.createServer();
+function handleRequest(request, response){
+    response.statusCode = 200;
+    response.end('<h1>Hello World !</h1>');
+}
 
-server.listen("3000");
+const server = http.createServer(handleRequest);
+
+server.listen(3000);
