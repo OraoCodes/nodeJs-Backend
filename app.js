@@ -1,12 +1,13 @@
-//launch a http
-//create a server
-//listen in on the server
-
 const http = require("http");
 
-function handleRequest(request, response){
-    response.statusCode = 200;
-    response.end('<h1>Hello World !</h1>');
+function handleRequest(request, response) {
+    if(request.url === '/currenttime'){
+        response.statusCode = 200;
+        response.end("<h1>" + new Date().toISOString() + "</h1>");
+    }else if(request.url === '/'){
+        response.statusCode = 200;
+        response.end("<h1>Hello World !</h1>");
+    }
 }
 
 const server = http.createServer(handleRequest);
